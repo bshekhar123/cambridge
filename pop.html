@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Form</title>
+    <style>
+        /* Ensure no horizontal scrolling */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .popup-new {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            overflow-y: auto; /* Allow vertical scrolling if content exceeds height */
+        }
+
+        .popup-container {
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            width: 32%; /* Decreased width */
+            max-width: 480px; /* Decreased max-width */
+            height: auto;
+            max-height: 90vh; /* Prevents popup from exceeding viewport height */
+            overflow: hidden; /* Prevents content overflow */
+        }
+
+        .left-section {
+            background-color: #e23321;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px; /* Adjusted padding */
+        }
+
+        .logo {
+            max-width: 16%; /* Adjusted logo size */
+            height: auto;
+        }
+
+        .welcome-text, .university-name {
+            color: white;
+            text-align: center;
+            font-size: 18px; /* Font size adjustment */
+        }
+
+        .welcome-text {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .university-name {
+            font-weight: bold;
+        }
+
+        .popup-heading {
+            font-size: 16px; /* Adjusted font size */
+            color: #e23321;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px; /* Added margin to separate text */
+        }
+
+        .right-section {
+            background-color: white;
+            padding: 12px; /* Adjusted padding */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 8px;
+            overflow-y: auto; /* Allow vertical scrolling if content is too long */
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
+        form input, form select {
+            width: 100%;
+            padding: 6px; /* Adjusted padding */
+            font-size: 12px; /* Adjusted font size */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-button {
+            background-color: #e23321;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 14px; /* Adjusted font size */
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .submit-button:hover {
+            background-color: white;
+            color: #e23321;
+            border: 2px solid #e23321;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1440px) {
+            .popup-container {
+                width: 80%;
+                max-width: 100%;
+            }
+
+            .popup-heading {
+                font-size: 14px;
+            }
+
+            form input, form select {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            form input, form select {
+                padding: 5px;
+                font-size: 10px;
+            }
+
+            .submit-button {
+                padding: 6px;
+                font-size: 12px;
+            }
+        }
+        @media (max-width: 768px) {
+            .popup-container {
+                width: 80%;
+                max-width: 100%;
+            }
+
+            .popup-heading {
+                font-size: 14px;
+            }
+
+            form input, form select {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            form input, form select {
+                padding: 5px;
+                font-size: 10px;
+            }
+
+            .submit-button {
+                padding: 6px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="popup-new">
+        <div class="popup-container">
+            <div class="left-section">
+                <img src="images/logo (2).png" alt="Logo" class="logo">
+                <div class="welcome-text">Welcome</div>
+                <div class="university-name">Cambridge University</div>
+            </div>
+            <div class="right-section">
+                <div class="popup-heading">Apply Now for Heavy Discounts</div>
+
+                <form id="registration-form"
+                    action="https://script.google.com/macros/s/AKfycbxJYTIrTsdAW1DCk_CWWIyGwgE4XuTHmAO_Fmyc3NTCV5XaQz0o-270Qjt3oyl5lSGr/exec"
+                    method="POST">
+                    
+                    <div class="form-row">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder=" " required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|co\.in)$" name="email"
+                            placeholder=" " required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" pattern="\d{10}" maxlength="10"
+                            title="Please enter a 10-digit phone number" placeholder=" " required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="city">City:</label>
+                        <select id="city" name="city" required>
+                            <option value="" disabled selected></option>
+                            <optgroup label="Major Cities">
+                                <option value="New Delhi">New Delhi</option>
+                                <option value="Ahmedabad">Ahmedabad</option>
+                                <option value="Bangalore">Bangalore</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Chennai">Chennai</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Kolkata">Kolkata</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="course">Course Interested In:</label>
+                        <select id="course" name="course" required>
+                            <option value="" disabled selected></option>
+                            <option value="Bachelors">Bachelors</option>
+                            <option value="MBA/PGDM">MBA/PGDM</option>
+                            <option value="MS/M.Sc">MS/M.Sc</option>
+                            <option value="Masters">Masters</option>
+                            <option value="Ph.D">Ph.D</option>
+                            <option value="Certificate">Certificate</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="specialization">Specialization:</label>
+                        <select id="specialization" name="specialization" required>
+                            <option value="" disabled selected></option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-button">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
